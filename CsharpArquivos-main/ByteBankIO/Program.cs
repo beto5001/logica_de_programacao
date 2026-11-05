@@ -18,6 +18,9 @@ class Program
 
             
         EscreverBuffer(buffer);
+
+        fluxoDoArquivo.Close(); // fecha o fluxo do arquivo
+
         Console.ReadLine();
     }
 
