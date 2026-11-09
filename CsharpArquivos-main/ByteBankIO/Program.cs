@@ -13,7 +13,7 @@
         while(!leitor.EndOfStream) // enquanto não chegar no final do arquivo
         {
             string linha = leitor.ReadLine(); // lê uma linha do arquivo
-            Console.WriteLine(linha); // escreve a linha no console
+            Console.WriteLine(linha); // escreve a linha no console teste
         }
 
         Console.ReadLine();
