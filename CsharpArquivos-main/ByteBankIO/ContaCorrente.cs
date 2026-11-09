@@ -1,47 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace ByteBankIO;
 
-namespace ByteBankIO
+public class ContaCorrente
 {
-    public class ContaCorrente
+    public int Numero { get; }
+    public int Agencia { get; }
+    public double Saldo { get; private set; }
+    public Cliente? Titular { get; set; }
+
+    public ContaCorrente(int agencia, int numero)
     {
-        public int Numero { get; }
-        public int Agencia { get; }
-        public double Saldo { get; private set; }
-        public Cliente Titular { get; set; }
+        Agencia = agencia;
+        Numero = numero;
+    }
 
-        public ContaCorrente(int agencia, int numero)
+    public void Depositar(double valor)
+    {
+        if (valor <= 0)
         {
-            Agencia = agencia;
-            Numero = numero;
+            throw new ArgumentException("Valor de deposito deve ser maior que zero.", nameof(valor));
         }
 
-        public void Depositar(double valor)
-        {
-            if (valor <= 0)
-            {
-                throw new ArgumentException("Valor de deposito deve ser maior que zero.", nameof(valor));
-            }
+        Saldo += valor;
+    }
 
-            Saldo += valor;
+    public void Sacar(double valor)
+    {
+        if (valor <= 0)
+        {
+            throw new ArgumentException("Valor de saque deve ser maior que zero.", nameof(valor));
         }
 
-        public void Sacar(double valor)
+        if (valor > Saldo)
         {
-            if (valor <= 0)
-            {
-                throw new ArgumentException("Valor de saque deve ser maior que zero.", nameof(valor));
-            }
-
-            if (valor > Saldo)
-            {
-                throw new InvalidOperationException("Saldo insuficiente.");
-            }
-
-            Saldo += valor;
+            throw new InvalidOperationException("Saldo insuficiente.");
         }
+
+        Saldo += valor;
     }
 }
