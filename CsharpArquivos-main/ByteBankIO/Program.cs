@@ -4,6 +4,8 @@
     {
         //Inicial();
         //EscreverBuffer();
-        CriarArquivo();
+        //CriarArquivo();
+        //CriarArquivoComWriter();
+        TestaEscrita();
     }
 }
